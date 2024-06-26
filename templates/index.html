@@ -3,23 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>ASCII Art Generator</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
     <link rel="stylesheet" type="text/css" href="/static/styles.css">
 </head>
 <body>
     <div id="header">
-        <h1>ASCII Art Generator</h1>
+        <h1>ASCII <span class = "art">Art</span> Generator</h1>
         <form method="post" action="/ascii-art" id="header-form">
-            <div class="control-panel">
-                <label for="text">Text:</label>
-                <textarea id="text" name="text" placeholder="Enter Text">{{ .Text }}</textarea>
-                <label for="banner">Banner:</label>
-                <select id="banner" name="banner">
-                    <option value="standard">Standard</option>
-                    <option value="shadow">Shadow</option>
-                    <option value="thinkertoy">Thinkertoy</option>
-                </select>
-                <input type="submit" value="Generate ASCII Art">
-            </div>
+            <fieldset>
+                <legend>Create Your ASCII Art</legend>
+                <div class="control-panel">
+                    <div class="input-group">
+                        <label for="text">Text:</label>
+                        <textarea id="text" name="text" placeholder="Enter Text ...">{{ .Text }}</textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="banner">Banner:</label>
+                        <select id="banner" name="banner">
+                            <option value="standard">Standard</option>
+                            <option value="shadow">Shadow</option>
+                            <option value="thinkertoy">Thinkertoy</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Generate ASCII Art">
+                </div>
+            </fieldset>
         </form>
     </div>
 
