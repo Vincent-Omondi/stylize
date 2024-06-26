@@ -22,17 +22,39 @@ body {
     left: 0; 
     width: 100%; 
     overflow: hidden; 
-    color: white;
+    color: #35d366;
     background-color: #2e3440; 
-    height: 200px; 
+    height: 300px; 
     padding: 10px; 
     margin: 0px;
+    font-family: Source Code Pro,sans-serif;
     
 } 
+
+fieldset {
+    background-color: transparent;
+    border: 2px solid #35d366;
+    border-radius: 7px;
+    margin:auto;
+}
+
+legend {
+    display: block;
+    background-color: transparent;
+    color: white;
+    padding:  5px 10px;
+    font-family: Source Code Pro,sans-serif;
+}
 
 #header h1 {
     margin: 0;
     padding-bottom: 0px;
+    text-align: center;
+}
+
+#header h1 .art {
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
 }
 
 #header-form {
@@ -44,7 +66,20 @@ body {
 #header-form .control-panel {
     display: flex;
     flex-direction: column;
-    gap: 1px;
+    gap: 10px;
+}
+
+#header-form .control-panel .input-group {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+#header-form .control-panel .input-group label {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Source Code Pro,sans-serif;
 }
 
 #footer { 
@@ -64,13 +99,14 @@ body {
 
 #maincontent { 
     position: fixed; 
-    top: 210px; 
+    top: 280px; 
     left: 0; 
     right: 0; 
     bottom: 50px; 
     overflow: auto; 
-    background: #fff; 
+    background: black; 
     border: 3px #cccccc solid;
+    color: white;
 } 
 
 .fig { 
@@ -86,11 +122,14 @@ body {
 } 
 
 input[type="submit"] {
-    background-color: #4CAF50;
+    background-color: transparent;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 3px;
+    font-size: 13pt;
+    font-weight: bold;
+    font-family: Source Code Pro,sans-serif;
+    border: 1px solid #35d366;
+    padding: 10px 10px;
+    border-radius: 7px;
     cursor: pointer;
 }
 
@@ -102,8 +141,22 @@ textarea, select {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
-    border: 1px solid #555;
+    border: 1px solid #35d366;
     border-radius: 3px;
     background-color: #222;
     color: #fff;
+    font-family: Source Code Pro,sans-serif;
+}
+
+textarea {
+    width: 200px;
+    height: 50px;
+    resize: none; 
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #35d366;
+    border-radius: 3px;
+    background-color: #222;
+    color: #fff;
+   ;font-family: 'Courier New', Courier, monospace;
 }
