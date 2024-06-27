@@ -8,26 +8,37 @@
 </head>
 <body>
     <div id="header">
-        <h1>ASCII <span class = "art">Art</span> Generator</h1>
+        <h1>ASCII <span class="art">Art</span> Generator</h1>
         <form method="post" action="/ascii-art" id="header-form">
             <fieldset>
                 <legend>Create Your ASCII Art</legend>
                 <div class="control-panel">
-                    <div class="input-group">
-                        <label for="text">Text:</label>
-                        <textarea id="text" name="text" placeholder="Enter Text ...">{{ .Text }}</textarea>
+                    <div class="input-group-horizontal">
+                        <div class="input-group">
+                            <label for="text">Text</label>
+                            <textarea id="text" name="text" placeholder="Enter Text ...">{{ .Text }}</textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="banner">Font</label>
+                            <select id="banner" name="banner">
+                                <option value="standard">Standard</option>
+                                <option value="shadow">Shadow</option>
+                                <option value="thinkertoy">Thinkertoy</option>
+                                <option value="roman">Roman</option>
+                                <option value="roman_space">Roman Space</option>                            
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="enableKeyboardInput">Enable Keyboard Input:</label>
+                            <label class = "switch">
+                                <input type="checkbox" id="enableKeyboardInput" name="enableKeyboardInput">
+                                <span class = "slider round" ></span>
+                            </label>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <label for="banner">Banner:</label>
-                        <select id="banner" name="banner">
-                            <option value="standard">Standard</option>
-                            <option value="shadow">Shadow</option>
-                            <option value="thinkertoy">Thinkertoy</option>
-                            <option value="roman">Roman</option>
-                            <option value="roman_space">Roman Space</option>                            
-                        </select>
+                    <div class = "input-group submit-group">
+                        <input type="submit" value="Generate ASCII Art">
                     </div>
-                    <input type="submit" value="Generate ASCII Art">
                 </div>
             </fieldset>
         </form>
@@ -35,12 +46,36 @@
 
     <div id="maincontent">
         <div id="outputFigDisplay">
-            <pre>{{ .Result }}</pre>
+            <pre id="asciiOutput">{{ .Result }}</pre>
         </div>
     </div>
 
     <div id="footer">
         <p>&copy; 2024 ASCII Art Generator</p>
     </div>
+
+    <script>
+        document.getElementById('text').addEventListener('input', function() {
+            const enableKeyboardInput = document.getElementById('enableKeyboardInput').checked;
+            if (enableKeyboardInput) {
+                const text = document.getElementById('text').value;
+                const banner = document.getElementById('banner').value;
+
+                fetch('/ascii-art', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: `text=${encodeURIComponent(text)}&banner=${encodeURIComponent(banner)}`
+                })
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('asciiOutput').innerText = data;
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        });
+    </script>
 </body>
 </html>
