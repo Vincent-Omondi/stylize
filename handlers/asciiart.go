@@ -37,6 +37,12 @@ func AsciiArtHandler(w http.ResponseWriter, r *http.Request) {
 		asciiArt += asciiart.PrintAsciiArt(wrd, asciiChars)
 	}
 
+	if r.Header.Get("X-Requested-With") == "XMLHttpRequest" {
+		w.Header().Set("Content-Type", "text/plain")
+		w.Write([]byte(asciiArt))
+		return
+	}
+
 	data := AsciiData{
 		Text:   text,
 		Banner: banner,
