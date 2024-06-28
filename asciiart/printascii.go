@@ -30,7 +30,7 @@ func printLine(text string, asciiChars map[byte][]string, line int) string {
 	for _, char := range text {
 		if char == '\n' {
 			lineBuilder.WriteString("\n")
-		} else {
+		} else if char >= 32 && char <= 126 {
 			lineBuilder.WriteString(asciiChars[byte(char)][line])
 		}
 	}
