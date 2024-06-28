@@ -55,27 +55,77 @@
     </div>
 
     <script>
-        document.getElementById('text').addEventListener('input', function() {
-            const enableKeyboardInput = document.getElementById('enableKeyboardInput').checked;
-            if (enableKeyboardInput) {
-                const text = document.getElementById('text').value;
-                const banner = document.getElementById('banner').value;
-
-                fetch('/ascii-art', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'X-Requested-With': 'XMLHttpRequest'
-                    },
-                    body: `text=${encodeURIComponent(text)}&banner=${encodeURIComponent(banner)}`
-                })
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('asciiOutput').innerText = data;
-                })
-                .catch(error => console.error('Error:', error));
+    document.addEventListener('DOMContentLoaded', function() {
+        const asciiOutput = document.getElementById('asciiOutput');
+        const textInput = document.getElementById('text');
+        const enableKeyboardInput = document.getElementById('enableKeyboardInput');
+        const bannerSelect = document.getElementById('banner');
+        const mainContent = document.getElementById('maincontent');
+    
+        // Function to scroll to the bottom right of the main content
+        function scrollToBottomRight() {
+            mainContent.scrollTop = mainContent.scrollHeight;
+            mainContent.scrollLeft = mainContent.scrollWidth;
+        }
+    
+        // MutationObserver to automatically scroll the content
+        const observer = new MutationObserver(() => {
+            scrollToBottomRight();
+        });
+    
+        observer.observe(asciiOutput, { childList: true, subtree: true });
+    
+        // Function to fetch and update ASCII art
+        function fetchAndUpdateAsciiArt() {
+            const text = textInput.value.trim(); // Trim whitespace
+            const banner = bannerSelect.value;
+    
+            // Check if text is empty to avoid 400 error
+            if (!text) {
+                asciiOutput.innerText = "Please enter some text.";
+                return;
+            }
+    
+            fetch('/ascii-art', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: `text=${encodeURIComponent(text)}&banner=${encodeURIComponent(banner)}`
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(data => {
+                asciiOutput.innerText = data;
+                scrollToBottomRight(); // Force scroll to bottom right
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                asciiOutput.innerText = `Error: ${error.message}`;
+            });
+        }
+    
+        // Form submission event
+        document.getElementById('header-form').addEventListener('submit', function(event) {
+            if (enableKeyboardInput.checked) {
+                event.preventDefault();  // Prevent the default form submission
+                fetchAndUpdateAsciiArt();
             }
         });
+    
+        // Input event for real-time updates
+        textInput.addEventListener('input', function() {
+            if (enableKeyboardInput.checked) {
+                fetchAndUpdateAsciiArt();
+            }
+        });
+    });
     </script>
+        
 </body>
 </html>
