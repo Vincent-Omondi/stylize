@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASCII Art Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #264653;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .error-container {
+            max-width: 600px;
+            padding: 20px;
+            border: 2px solid #35d366;
+            border-radius: 15px;
+            background-color: #00334d;
+        }
+        .error-container h1 {
+            color: #35d366;
+        }
+        .error-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .error-container li {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #35d366;
+            padding-bottom: 5px;
+        }
+        .error-code {
+            font-size: 24px;
+            color: #e76f51;
+        }
+        .error-link {
+            color: #35d366;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-code">{{.Code}}</div>
+        <ul>
+            {{range .Errors}}
+            <li>{{.}}</li>
+            {{end}}
+        </ul>
+        <a href="/" class="error-link">Go Back</a>
+    </div>
+</body>
+</html>
