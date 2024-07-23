@@ -24,7 +24,8 @@ body {
     overflow: hidden; 
     color: #35d366;
     background-color: #2e3440; 
-    height: 300px; 
+    height: 400px; 
+    /* height: auto;  */
     padding: 10px; 
     margin: 0px;
     font-family: Source Code Pro,sans-serif;
@@ -36,6 +37,7 @@ fieldset {
     border: 2px solid #35d366;
     border-radius: 7px;
     margin:auto;
+    /* padding: 20px; */
 }
 
 legend {
@@ -43,7 +45,10 @@ legend {
     background-color: transparent;
     color: white;
     padding:  5px 10px;
+    /* padding: 10px 15px; */
     font-family: Source Code Pro,sans-serif;
+    /* font-size: 24px; */
+    /* margin-bottom: 20px; */
 }
 
 #header h1 {
@@ -59,31 +64,41 @@ legend {
 
 #header-form {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-#header-form .control-panel {
+.control-panel {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    /* gap: 20px; */
+    width: 100%;
 }
 
 .input-group-horizontal {
     display: flex;
+    flex-direction: column;
     gap: 20px;
+    width: 100%;
 }
 
 #header-form .control-panel .input-group {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+    /* gap: 15px; */
+    width: 100%;
 }
 
 
 #header-form .control-panel .input-group label {
     font-size: 20px;
+    /* font-size: 22px; */
     font-weight: bold;
     font-family: Source Code Pro,sans-serif;
 }
@@ -101,11 +116,15 @@ legend {
     overflow: hidden; 
     background-color: #000000; 
     color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 } 
 
 #maincontent { 
     position: fixed; 
-    top: 280px; 
+    top: 420px; 
     left: 0; 
     right: 0; 
     bottom: 50px; 
@@ -113,6 +132,7 @@ legend {
     background: black; 
     border: 2px #cccccc solid;
     color: white;
+    padding: 10px;
 } 
 
 .fig { 
@@ -131,12 +151,15 @@ input[type="submit"] {
     background-color: transparent;
     color: white;
     font-size: 13pt;
+    /* font-size: 15pt;  */
     font-weight: bold;
     font-family: Source Code Pro,sans-serif;
     border: 1px solid #35d366;
     padding: 10px 10px;
+    /* padding: 12px 15px;  */
     border-radius: 7px;
     cursor: pointer;
+    width: 100%;
 }
 
 input[type="submit"]:hover {
@@ -146,25 +169,32 @@ input[type="submit"]:hover {
 textarea, select {
     width: 100%;
     padding: 8px;
+    /* padding: 12px; */
     margin-bottom: 10px;
+    /* margin-bottom: 15px; */
     border: 1px solid #35d366;
     border-radius: 3px;
     background-color: #222;
     color: #fff;
     font-family: Source Code Pro,sans-serif;
+    /* font-size: 16px */
 }
 
 textarea {
     width: 200px;
     height: 50px;
+    /* height: 120px; */
     resize: none; 
     padding: 8px;
+    /* padding: 8px; */
     margin-bottom: 10px;
+    /* margin-bottom: 15px; */
     border: 1px solid #35d366;
     border-radius: 3px;
     background-color: #222;
     color: #fff;
-   ;font-family: 'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
+    /* font-size: 16px; */
 }
 
 .switch {
@@ -172,6 +202,8 @@ textarea {
     display: inline-block;
     width: 40px;
     height: 23px;
+    /* width: 50px; */
+    /* height:30px; */
 }
 
 .switch input {
@@ -202,6 +234,10 @@ textarea {
     background-color: white;
     transition: .4s;
     border-radius: 50%;
+    /* height: 22px;  */
+    /* width: 22px;  */
+    /* left: 4px; */
+    /* bottom: 4px; */
 }
 
 input:checked + .slider {
@@ -210,6 +246,7 @@ input:checked + .slider {
 
 input:checked + .slider:before {
     transform: translateX(18px);
+    /* transform: translateX(20px); */
 }
 
 .slider.round {
@@ -224,4 +261,32 @@ input:checked + .slider:before {
     display: flex;
     justify-content: center;
     margin-top: 0px;
+    width: 100%;
+}
+
+/* Media Queries for Responsive Design */
+@media (min-width: 600px) {
+    .input-group-horizontal {
+        flex-direction: row;
+    }
+
+    .input-group {
+        flex-basis: 48%;
+    }
+}
+
+@media (min-width: 768px) {
+    #header-form {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .control-panel {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .submit-group {
+        width: 100%;
+    }
 }
