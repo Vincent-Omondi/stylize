@@ -14,6 +14,11 @@ body {
     max-height: 100%; 
     font-family: Verdana, Arial, Helvetica, sans-serif; 
     font-size: 12px;
+    /* background-color: #264653; */
+    background: linear-gradient(to bottom, #264653 400px, #1b313f 50%);
+    min-height: 100vh; /* Ensure the body takes up the full height */
+    margin: 0; /* Remove default margin */
+    /* background-color: #2e3440; */
 } 
 
 #header { 
@@ -23,9 +28,8 @@ body {
     width: 100%; 
     overflow: hidden; 
     color: #35d366;
-    background-color: #2e3440; 
-    height: 400px; 
-    /* height: auto;  */
+    background-color: transparent; 
+    height: 450px; 
     padding: 10px; 
     margin: 0px;
     font-family: Source Code Pro,sans-serif;
@@ -37,7 +41,8 @@ fieldset {
     border: 2px solid #35d366;
     border-radius: 7px;
     margin:auto;
-    /* padding: 20px; */
+    /* padding: 30px; */
+   
 }
 
 legend {
@@ -55,6 +60,8 @@ legend {
     margin: 0;
     padding-bottom: 0px;
     text-align: center;
+    font-size: 32px;
+    font-family: "Audiowide", sans-serif;
 }
 
 #header h1 .art {
@@ -67,7 +74,8 @@ legend {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 600px;
+    max-width: 900px;
+    height: 300px;
     margin: 0 auto;
 }
 
@@ -97,7 +105,7 @@ legend {
 
 
 #header-form .control-panel .input-group label {
-    font-size: 20px;
+    font-size: 28px;
     /* font-size: 22px; */
     font-weight: bold;
     font-family: Source Code Pro,sans-serif;
@@ -124,15 +132,19 @@ legend {
 
 #maincontent { 
     position: fixed; 
-    top: 420px; 
+    top: 460px; 
     left: 0; 
     right: 0; 
     bottom: 50px; 
     overflow: auto; 
-    background: black; 
-    border: 2px #cccccc solid;
+    background: transparent; 
+    border: 1px #35d366 solid;
     color: white;
     padding: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 10px;
+    border-radius: 25px;
 } 
 
 .fig { 
