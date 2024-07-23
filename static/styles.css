@@ -14,10 +14,10 @@ body {
     max-height: 100%; 
     font-family: Verdana, Arial, Helvetica, sans-serif; 
     font-size: 12px;
-    /* background-color: #264653; */
-    background: linear-gradient(to bottom, #264653 400px, #1b313f 50%);
+    background-color: #004466;
+    /* background: linear-gradient(to bottom,  #004466 400px, #00334d 50%);
     min-height: 100vh; /* Ensure the body takes up the full height */
-    margin: 0; /* Remove default margin */
+    /* margin: 0; Remove default margin */ 
     /* background-color: #2e3440; */
 } 
 
@@ -137,14 +137,14 @@ legend {
     right: 0; 
     bottom: 50px; 
     overflow: auto; 
-    background: transparent; 
+    background: #00334d ; 
     border: 1px #35d366 solid;
     color: white;
     padding: 10px;
     margin-left: 50px;
     margin-right: 50px;
     margin-bottom: 10px;
-    border-radius: 25px;
+    border-radius: 18px;
 } 
 
 .fig { 
@@ -160,7 +160,7 @@ legend {
 } 
 
 input[type="submit"] {
-    background-color: transparent;
+    background-color: #00334d;
     color: white;
     font-size: 13pt;
     /* font-size: 15pt;  */
@@ -186,7 +186,7 @@ textarea, select {
     /* margin-bottom: 15px; */
     border: 1px solid #35d366;
     border-radius: 3px;
-    background-color: #222;
+    background-color: #00334d;
     color: #fff;
     font-family: Source Code Pro,sans-serif;
     /* font-size: 16px */
@@ -203,7 +203,7 @@ textarea {
     /* margin-bottom: 15px; */
     border: 1px solid #35d366;
     border-radius: 3px;
-    background-color: #222;
+    background-color: #00334d;
     color: #fff;
     font-family: 'Courier New', Courier, monospace;
     /* font-size: 16px; */
@@ -285,6 +285,9 @@ input:checked + .slider:before {
     .input-group {
         flex-basis: 48%;
     }
+  h1 {
+    font-size: 5px;
+     }
 }
 
 @media (min-width: 768px) {
@@ -302,3 +305,19 @@ input:checked + .slider:before {
         width: 100%;
     }
 }
+/* @media (min-width: 300px) {
+  body {
+    height: 100vh;
+
+  }
+   #maincontent {
+    margin-top: 40px;
+    height: 250px;
+   }
+   fieldset {
+    width: 80%;
+   }
+   #header .control-panel{
+    height: 400px;
+   }
+} */
