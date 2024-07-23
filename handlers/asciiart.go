@@ -3,6 +3,7 @@ package handlers
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 	"strings"
 
@@ -10,9 +11,12 @@ import (
 )
 
 func AsciiArtHandler(w http.ResponseWriter, r *http.Request) {
+	var errors []string
+
 	// check if the method is not POST
 	if r.Method != http.MethodPost {
-		http.Error(w, "error 405: Method not allowed", http.StatusMethodNotAllowed)
+		errors = append(errors, "Method not allowed")
+		ErrorHandler(w, r, http.StatusMethodNotAllowed, errors)
 		return
 	}
 	// receive tesxt and banner from text field and banner option
@@ -22,11 +26,14 @@ func AsciiArtHandler(w http.ResponseWriter, r *http.Request) {
 
 	// check if the text field is empty
 	if len(text) == 0 {
-		http.Error(w, "error 400: Bad Request", http.StatusBadRequest)
+		errors = append(errors, "Error 400: Bad Request - Text field is empty")
+		ErrorHandler(w, r, http.StatusBadRequest, errors)
 		return
 	}
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+		log.Println(err)
+		errors = append(errors, err.Error())
+		ErrorHandler(w, r, http.StatusBadRequest, errors)
 		return
 	}
 
@@ -51,13 +58,15 @@ func AsciiArtHandler(w http.ResponseWriter, r *http.Request) {
 
 	tmpl, err := template.ParseFiles("templates/index.html")
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		errors = append(errors, err.Error())
+		ErrorHandler(w, r, http.StatusInternalServerError, errors)
 		return
 	}
 
 	// Execute the data and send it to tmpl
 	err = tmpl.Execute(w, data)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		errors = append(errors, err.Error())
+		ErrorHandler(w, r, http.StatusInternalServerError, errors)
 	}
 }
