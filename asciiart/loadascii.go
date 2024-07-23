@@ -12,7 +12,7 @@ func LoadAsciiChars(filename string) (map[byte][]string, error) {
 	file, err := os.Open(filename)
 	if err != nil {
 		if os.IsNotExist(err) {
-			return nil, fmt.Errorf("file '%s' not found", filename)
+			return nil, fmt.Errorf("there is an error with file'%s', our team is notified and we are working on it", filename)
 		} else {
 			return nil, fmt.Errorf("opening file: %w", err)
 		}
