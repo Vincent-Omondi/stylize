@@ -49,13 +49,13 @@ func LoadAsciiChars(filename string) (map[byte][]string, error) {
 	// Print error for incorrect number of ASCII characters
 	if len(asciiChars) != 95 {
 		fmt.Printf("Error: Expected %d but got %d ASCII CHARACTERS. Ensure you use the correct number of ASCII CHARACTERS\n", 95, len(asciiChars))
-		os.Exit(0)
+		return nil, fmt.Errorf("file is corrupted")
 	}
 
 	// Print error for incorrect number of lines per character
 	if count != 8 {
 		fmt.Printf("Error: Expected %d lines but got %d lines. Ensure the file has the correct number of lines per character\n", 8, count)
-		os.Exit(0)
+		return nil, fmt.Errorf("file is corrupted")
 	}
 
 	return asciiChars, nil
