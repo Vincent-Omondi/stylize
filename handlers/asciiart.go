@@ -23,6 +23,11 @@ func AsciiArtHandler(w http.ResponseWriter, r *http.Request) {
 	text := r.FormValue("text")
 	banner := r.FormValue("banner")
 	asciiChars, err := asciiart.LoadAsciiChars(banner + ".txt")
+	if err != nil {
+		errors = append(errors, "Error 500: Internal Server Error - banner file corrupted")
+		ErrorHandler(w, r, http.StatusInternalServerError, errors)
+		return
+	}
 
 	// check if the text field is empty
 	if len(text) == 0 {
