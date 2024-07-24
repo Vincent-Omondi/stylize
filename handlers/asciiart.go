@@ -24,7 +24,7 @@ func AsciiArtHandler(w http.ResponseWriter, r *http.Request) {
 	banner := r.FormValue("banner")
 	asciiChars, err := asciiart.LoadAsciiChars(banner + ".txt")
 	if err != nil {
-		errors = append(errors, "Error 500: Internal Server Error - banner file corrupted")
+		errors = append(errors, "Error 500: Internal Server Error")
 		ErrorHandler(w, r, http.StatusInternalServerError, errors)
 		return
 	}
