@@ -105,6 +105,8 @@ To use ASCII Art Web, follow these steps:
 
 3. Input your text, choose your preferred style of display(banner) and then submit by pressing the generate ascii art button.
 
+- **N/B** Stylize is strictly limited to ascii characters from character 32 to 126(' ' to '~') 
+
 ## Optional Styles
 
 Stylize supports multiple ASCII art styles, including:
