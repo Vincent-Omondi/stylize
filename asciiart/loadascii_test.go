@@ -1,7 +1,6 @@
 package asciiart
 
 import (
-	"io/ioutil"
 	"os"
 	"reflect"
 	"testing"
@@ -9,7 +8,7 @@ import (
 
 func TestLoadAsciiChars(t *testing.T) {
 	// Create an empty standard.txt file for testing
-	if err := ioutil.WriteFile("standard.txt", nil, 0o644); err != nil {
+	if err := os.WriteFile("standard.txt", nil, 0o644); err != nil {
 		t.Fatalf("Error creating test file: %v", err)
 	}
 	defer os.Remove("standard.txt")
@@ -24,7 +23,7 @@ func TestLoadAsciiChars(t *testing.T) {
 			name:          "Non-existent file",
 			filename:      "nonexistent.txt",
 			expectedMap:   nil,
-			expectedError: "file 'nonexistent.txt' not found",
+			expectedError: "there is an error with file'nonexistent.txt', our team is notified and we are working on it",
 		},
 		{
 			name:          "Empty file",

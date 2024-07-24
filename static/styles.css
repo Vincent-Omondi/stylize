@@ -15,14 +15,9 @@ body {
     font-family: Verdana, Arial, Helvetica, sans-serif; 
     font-size: 12px;
     background-color: #004466;
-    /* background: linear-gradient(to bottom,  #004466 400px, #00334d 50%);
-    min-height: 100vh; /* Ensure the body takes up the full height */
-    /* margin: 0; Remove default margin */ 
-    /* background-color: #2e3440; */
 } 
 
 #header { 
-    position: absolute; 
     top: 0; 
     left: 0; 
     width: 100%; 
@@ -33,16 +28,18 @@ body {
     padding: 10px; 
     margin: 0px;
     font-family: Source Code Pro,sans-serif;
-    
+    z-index: 1000;
+
+    flex-direction: column; 
+    align-items: center; 
+
 } 
 
 fieldset {
     background-color: transparent;
     border: 2px solid #35d366;
     border-radius: 7px;
-    margin:auto;
-    /* padding: 30px; */
-   
+    margin:auto;   
 }
 
 legend {
@@ -50,10 +47,7 @@ legend {
     background-color: transparent;
     color: white;
     padding:  5px 10px;
-    /* padding: 10px 15px; */
     font-family: Source Code Pro,sans-serif;
-    /* font-size: 24px; */
-    /* margin-bottom: 20px; */
 }
 
 #header h1 {
@@ -83,7 +77,6 @@ legend {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    /* gap: 20px; */
     width: 100%;
 }
 
@@ -99,22 +92,18 @@ legend {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-    /* gap: 15px; */
     width: 100%;
 }
 
 
 #header-form .control-panel .input-group label {
     font-size: 28px;
-    /* font-size: 22px; */
     font-weight: bold;
     font-family: Source Code Pro,sans-serif;
 }
 
 #footer { 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
+    position: fixed; 
     width: 100%; 
     overflow: hidden; 
     color: white;
@@ -128,10 +117,11 @@ legend {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 } 
 
 #maincontent { 
-    position: fixed; 
+    position: absolute; 
     top: 460px; 
     left: 0; 
     right: 0; 
@@ -145,6 +135,7 @@ legend {
     margin-right: 50px;
     margin-bottom: 10px;
     border-radius: 18px;
+
 } 
 
 .fig { 
@@ -160,15 +151,13 @@ legend {
 } 
 
 input[type="submit"] {
-    background-color: #00334d;
+    background-color: #35d366;
     color: white;
     font-size: 13pt;
-    /* font-size: 15pt;  */
     font-weight: bold;
     font-family: Source Code Pro,sans-serif;
     border: 1px solid #35d366;
     padding: 10px 10px;
-    /* padding: 12px 15px;  */
     border-radius: 7px;
     cursor: pointer;
     width: 100%;
@@ -181,32 +170,25 @@ input[type="submit"]:hover {
 textarea, select {
     width: 100%;
     padding: 8px;
-    /* padding: 12px; */
     margin-bottom: 10px;
-    /* margin-bottom: 15px; */
     border: 1px solid #35d366;
     border-radius: 3px;
     background-color: #00334d;
     color: #fff;
     font-family: Source Code Pro,sans-serif;
-    /* font-size: 16px */
 }
 
 textarea {
     width: 200px;
     height: 50px;
-    /* height: 120px; */
     resize: none; 
     padding: 8px;
-    /* padding: 8px; */
     margin-bottom: 10px;
-    /* margin-bottom: 15px; */
     border: 1px solid #35d366;
     border-radius: 3px;
     background-color: #00334d;
     color: #fff;
     font-family: 'Courier New', Courier, monospace;
-    /* font-size: 16px; */
 }
 
 .switch {
@@ -214,8 +196,6 @@ textarea {
     display: inline-block;
     width: 40px;
     height: 23px;
-    /* width: 50px; */
-    /* height:30px; */
 }
 
 .switch input {
@@ -246,10 +226,6 @@ textarea {
     background-color: white;
     transition: .4s;
     border-radius: 50%;
-    /* height: 22px;  */
-    /* width: 22px;  */
-    /* left: 4px; */
-    /* bottom: 4px; */
 }
 
 input:checked + .slider {
@@ -258,7 +234,6 @@ input:checked + .slider {
 
 input:checked + .slider:before {
     transform: translateX(18px);
-    /* transform: translateX(20px); */
 }
 
 .slider.round {
@@ -285,9 +260,9 @@ input:checked + .slider:before {
     .input-group {
         flex-basis: 48%;
     }
-  h1 {
+    h1 {
     font-size: 5px;
-     }
+    }
 }
 
 @media (min-width: 768px) {
@@ -305,19 +280,37 @@ input:checked + .slider:before {
         width: 100%;
     }
 }
-/* @media (min-width: 300px) {
-  body {
-    height: 100vh;
 
-  }
-   #maincontent {
-    margin-top: 40px;
-    height: 250px;
-   }
-   fieldset {
-    width: 80%;
-   }
-   #header .control-panel{
-    height: 400px;
-   }
-} */
+
+@media (max-width: 768px) {
+    #header {
+        height: 50%;
+    }
+
+    #maincontent {
+        position: absolute;
+        margin: 10px auto;
+        top: 500px;
+        width: 90%;
+    }
+
+    #header-form .control-panel .input-group label {
+        font-size: 20px;
+    }
+
+    #header h1 {
+        font-size: 28px;
+    }
+
+    fieldset {
+        width: 70%;
+        margin: auto;
+    }
+    #header-form {
+        max-width: 700px;
+        height: 400px;
+    }
+
+}
+
+
