@@ -23,7 +23,8 @@ func AsciiArtHandler(w http.ResponseWriter, r *http.Request) {
 	text := r.FormValue("text")
 	banner := r.FormValue("banner")
 	asciiChars, err := asciiart.LoadAsciiChars(banner + ".txt")
-	if err != nil {
+	if err != nil { // if banner has any issues while loading
+		log.Println(err)
 		errors = append(errors, "Error 500: Internal Server Error")
 		ErrorHandler(w, r, http.StatusInternalServerError, errors)
 		return
@@ -35,13 +36,6 @@ func AsciiArtHandler(w http.ResponseWriter, r *http.Request) {
 		ErrorHandler(w, r, http.StatusBadRequest, errors)
 		return
 	}
-	if err != nil {
-		log.Println(err)
-		errors = append(errors, err.Error())
-		ErrorHandler(w, r, http.StatusBadRequest, errors)
-		return
-	}
-
 	// split the text using  newline and carriage return and creates the art and appends it to asciiArt
 	str := strings.Split(text, "\r\n")
 	var asciiArt string
