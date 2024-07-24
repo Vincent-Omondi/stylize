@@ -12,6 +12,11 @@ import (
 )
 
 func main() {
+	if len(os.Args) > 1 {
+		fmt.Println("Usage: go run .")
+		os.Exit(1)
+	}
+
 	// Serve static files from the "static" directory
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
