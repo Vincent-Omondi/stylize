@@ -2,16 +2,21 @@
 
 ## Project Description
 
-ASCII Art Web is a web based tool developed in Go and HTML that converts text input into ASCII art using predefined character sets and displays it on the browser. This tool also allows users choose from multiple ASCII art styles to enhance the visual representation of their text.
+Stylize is a web-based tool designed to enhance the user experience by making a website more appealing, interactive, and intuitive. This project integrates various modern web technologies and practices to ensure that the website is user-friendly, responsive, and provides comprehensive feedback to users. Stylize is an improvement of ASCII Art Web which is a web based tool developed in Go and HTML that converts text input into ASCII art using predefined character sets and displays it on the browser. This tool also allows users choose from multiple ASCII art styles to enhance the visual representation of their text.
 
 ### Objectives
 
-The primary objective of this project is to provide a flexible and user-friendly tool for generating ASCII art from text input. It offers the following features:
+Stylize focuses on providing an engaging and seamless user experience. The primary objective of this project is to create a user-friendly and visually appealing website that incorporates the following features:
 
-- Conversion of text input into ASCII art using customizable character sets.
-- Multiple ASCII art styles to choose from, including standard, shadow, and thinkertoy.
+- Improved interactivity and intuitiveness.
+- Enhanced user-friendliness.
+- Increased feedback to users.
 
+### Key Learning Outcomes
 
+- The basics of human-computer interaction.
+- The fundamentals of CSS.
+- Linking CSS and HTML.
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary style="font-weight: bold; font-size: 1.4em;" >Table of Contents</summary>
@@ -30,7 +35,7 @@ The primary objective of this project is to provide a flexible and user-friendly
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#optional-ascii-art-styles">Optional ASCII Art Styles</a></li>
+    <li><a href="#optional-styles">Optional Styles</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -49,15 +54,18 @@ ASCII Art Web is designed to provide users with a simple yet powerful tool for c
 - **printascii.go**: A package that prints the ASCII art to the specified output file.
 - **asciiart.go**: A package that handles form action, loading ascii characters and generating ascii art
 - **index.go**: A package that handles the landing page of the web tool
+- **error.go**: A package that handles error page to allow for effective communication of any errors that occur
 
 ### Built With
 
 - Go Programming Language
+- CSS
+- JavaScript
 - HTML
 
 ## Getting Started
 
-To get started with ASCII Art Web, follow the instructions below.
+To get started with Stylize, follow the instructions below.
 
 ### Prerequisites
 
@@ -71,13 +79,13 @@ Before running the program, ensure that you have the following prerequisites:
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/Vincent-Omondi/ascii-art-web.git
+    git clone https://github.com/Vincent-Omondi/stylize.git
     ```
 
 2. Navigate to the project directory:
 
     ```sh
-    cd ascii-art-web
+    cd stylize
     ```
 
 ## Usage
@@ -90,21 +98,28 @@ To use ASCII Art Web, follow these steps:
     go run . 
     ```
 2. Open your browser and on a new tab, go to ```http://localhost:8080 ```
-3. Input your text, choose your preferred style of display(banner) and then submit by pressing the generate ascii art button
 
-## Optional ASCII Art Styles
 
-ASCII Art Output supports multiple ASCII art styles, including:
+ <img src="web_image.png" alt="Home page" width="600" height="400">
+
+
+3. Input your text, choose your preferred style of display(banner) and then submit by pressing the generate ascii art button.
+
+## Optional Styles
+
+Stylize supports multiple ASCII art styles, including:
 
 - **Standard**: A basic ASCII art style.
 - **Shadow**: ASCII art with shadow effects.
 - **Thinkertoy**: ASCII art with a playful design.
+- **roman_space.txt**
+- **roman.txt**
 
 ## Expected Output
 
 Input Text: Hello
 
-Instance 1. shadow 
+Instance 1. standard(default) 
 ```
  _    _          _   _          
 | |  | |        | | | |         
@@ -116,7 +131,7 @@ Instance 1. shadow
                                       
 ```                                   
 
-Instance 2. thinktertoy
+Instance 2. shadow
 ```
                               
 _|    _|          _| _|          
@@ -129,7 +144,7 @@ _|    _|   _|_|_| _| _|   _|_|
 
 ```
 
-Instance 3. standard
+Instance 3. thinkertoy
 
 ```
                  
@@ -141,16 +156,32 @@ o  o o-o o o o-o
                                                                                   
 
 ```
+Instance 4. roman
+
+```
+                 
+ooooo   ooooo           oooo  oooo            
+`888'   `888'           `888  `888            
+ 888     888   .ooooo.   888   888   .ooooo.  
+ 888ooooo888  d88' `88b  888   888  d88' `88b 
+ 888     888  888ooo888  888   888  888   888 
+ 888     888  888    .o  888   888  888   888 
+o888o   o888o `Y8bod8P' o888o o888o `Y8bod8P' 
+                                              
+                                                                                
+```
+             
 ## Roadmap
 
 The following features are planned for future releases:
 - Add support for color.
 - Add feature to specify text alignment
 - Integration with third-party ASCII art libraries.
+- Enhanced CSS animations and transitions.
 
 ## Contributing
 
-Contributions to ASCII Art Output are welcome! If you'd like to contribute, please follow these steps:
+Contributions to stylize are welcome! If you'd like to contribute, please follow these steps:
 
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
@@ -175,205 +206,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Acknowledgments
 
 Special thanks to the creators of the ASCII art character sets used in this project.
-
-
-
-
-Project Description
-
-Stylize is a web-based tool designed to enhance the user experience by making a website more appealing, interactive, and intuitive. This project integrates various modern web technologies and practices to ensure that the website is user-friendly, responsive, and provides comprehensive feedback to users.
-Objectives
-
-The primary objective of this project is to create a user-friendly and visually appealing website that incorporates the following features:
-
-    Improved interactivity and intuitiveness.
-    Enhanced user-friendliness.
-    Increased feedback to users.
-
-Key Learning Outcomes
-
-This project helps in understanding:
-
-    The basics of human-computer interaction.
-    The fundamentals of CSS.
-    Linking CSS and HTML.
-
-Allowed Packages
-
-    Only standard Go packages are allowed.
-
-
-Stylize
-Project Description
-
-Stylize is a web-based tool designed to enhance the user experience by making a website more appealing, interactive, and intuitive. This project integrates various modern web technologies and practices to ensure that the website is user-friendly, responsive, and provides comprehensive feedback to users.
-Objectives
-
-The primary objective of this project is to create a user-friendly and visually appealing website that incorporates the following features:
-
-    Improved interactivity and intuitiveness.
-    Enhanced user-friendliness.
-    Increased feedback to users.
-
-Key Learning Outcomes
-
-This project helps in understanding:
-
-    The basics of human-computer interaction.
-    The fundamentals of CSS.
-    Linking CSS and HTML.
-
-Allowed Packages
-
-    Only standard Go packages are allowed.
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary style="font-weight: bold; font-size: 1.4em;">Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#implementation-details">Implementation Details</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#authors">Authors</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-Implementation Details
-
-Stylize focuses on providing an engaging and seamless user experience. The project architecture consists of several components that ensure the smooth functioning of the website.
-Built With
-
-    Go Programming Language
-    Node.js
-    Express.js
-    Redis
-    CSS
-    HTML
-
-Getting Started
-
-To get started with Stylize, follow the instructions below.
-Prerequisites
-
-Ensure that you have the following prerequisites before running the program:
-
-    Go installed on your machine.
-    Node.js and npm installed on your machine.
-    Redis installed and running on your machine.
-    Basic understanding of Go and JavaScript programming languages.
-
-Installation
-
-    Clone the repository:
-
-    sh
-
-git clone https://github.com/yourusername/stylize.git
-
-Navigate to the project directory:
-
-sh
-
-cd stylize
-
-Install the necessary Node.js packages:
-
-sh
-
-npm install
-
-Configure the Redis server details in default.json:
-
-json
-
-    {
-      "redis": {
-        "host": "127.0.0.1",
-        "port": 6379
-      }
-    }
-
-Usage
-
-To use Stylize, follow these steps:
-
-    Start the server with the following command:
-
-    sh
-
-node index.js
-
-Open your browser and navigate to:
-
-sh
-
-    http://localhost:3000
-
-    Interact with the various features on the website, ensuring a consistent, responsive, and interactive user experience.
-
-Roadmap
-
-The following features are planned for future releases:
-
-    Enhanced CSS animations and transitions.
-    Additional interactive elements such as modals and tooltips.
-    Integration with external APIs for dynamic content.
-
-Contributing
-
-Contributions to Stylize are welcome! If you'd like to contribute, please follow these steps:
-
-    Fork the repository.
-    Create a new branch for your feature or bug fix.
-    Make your changes and commit them with descriptive messages.
-    Push your changes to your fork.
-    Open a pull request to merge your changes into the main branch.
-
-License
-
-This project is licensed under the MIT License. See the LICENSE file for more details.
-Authors
-
-    GitHub - YourUsername
-
-<p align="right">(<a href="#stylize">back to top</a>)</p>
-Acknowledgments
-
-Special thanks to the creators of the various tools and libraries used in this project, including Node.js, Express.js, and Redis.
-File Descriptions
-Configuration Files
-
-    default.json: Contains default configuration settings for the application, including Redis server details​​.
-    configure.js: Merges default and custom configurations using mixme​​​​.
-
-Database
-
-    dbClient.js: Establishes a connection to the Redis database and exports the Redis client instance for use throughout the application​​.
-
-Server and Routing
-
-    index.js: Main entry point for the Node.js server. Sets up the Express.js application, connects to Redis, and defines routes​​.
-    user.controller.js: Contains logic for user-related operations such as creating and retrieving users​​.
-    user.router.js: Defines REST API routes for user operations and includes test cases for these routes​​.
-
-Frontend
-
-    index.html: The main HTML file for the website, containing the structure and content of the homepage. Includes CSS for styling the webpage​​.
-
-Package Configuration
-
-    package-lock.json: Specifies the versions of the installed Node.js packages and their dependencies​​.
