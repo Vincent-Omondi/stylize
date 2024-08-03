@@ -30,13 +30,13 @@
                         </div>
                         <div class="input-group">
                             <label for="enableKeyboardInput">Enable Keyboard Input:</label>
-                            <label class = "switch">
+                            <label class="switch">
                                 <input type="checkbox" id="enableKeyboardInput" name="enableKeyboardInput">
-                                <span class = "slider round" ></span>
+                                <span class="slider round"></span>
                             </label>
                         </div>
                     </div>
-                    <div class = "input-group submit-group">
+                    <div class="input-group submit-group">
                         <input type="submit" value="Generate ASCII Art">
                     </div>
                 </div>
@@ -48,6 +48,8 @@
         <div id="outputFigDisplay">
             <pre id="asciiOutput">{{ .Result }}</pre>
         </div>
+        <a id="exportButton" style="display: none;" download>Export ASCII Art</a>
+        <!-- <button id="exportButton" style="display: none;">Export ASCII Art</button> -->
     </div>
 
     <div id="footer">
@@ -61,28 +63,26 @@
         const enableKeyboardInput = document.getElementById('enableKeyboardInput');
         const bannerSelect = document.getElementById('banner');
         const mainContent = document.getElementById('maincontent');
+        const exportButton = document.getElementById('exportButton');
     
-        // Function to scroll to the bottom right of the main content
         function scrollToBottomRight() {
             mainContent.scrollTop = mainContent.scrollHeight;
             mainContent.scrollLeft = mainContent.scrollWidth;
         }
     
-        // MutationObserver to automatically scroll the content
         const observer = new MutationObserver(() => {
             scrollToBottomRight();
         });
     
         observer.observe(asciiOutput, { childList: true, subtree: true });
     
-        // Function to fetch and update ASCII art
         function fetchAndUpdateAsciiArt() {
-            const text = textInput.value.trim(); // Trim whitespace
+            const text = textInput.value.trim();
             const banner = bannerSelect.value;
     
-            // Check if text is empty to avoid 400 error
             if (!text) {
                 asciiOutput.innerText = "Please enter some text.";
+                exportButton.style.display = "none";
                 return;
             }
     
@@ -102,23 +102,25 @@
             })
             .then(data => {
                 asciiOutput.innerText = data;
-                scrollToBottomRight(); // Force scroll to bottom right
+                exportButton.style.display = "inline-block";
+                exportButton.href = `/export?ascii=${encodeURIComponent(data)}`;
+                scrollToBottomRight();
             })
             .catch(error => {
                 console.error('Error:', error);
                 asciiOutput.innerText = `Error: ${error.message}`;
+                exportButton.style.display = "none";
             });
         }
     
-        // Form submission event
         document.getElementById('header-form').addEventListener('submit', function(event) {
-            if (enableKeyboardInput.checked) {
-                event.preventDefault();  // Prevent the default form submission
-                fetchAndUpdateAsciiArt();
-            }
+            // if (enableKeyboardInput.checked) {
+            //     event.preventDefault();  
+            // }
+            event.preventDefault();
+            fetchAndUpdateAsciiArt();
         });
     
-        // Input event for real-time updates
         textInput.addEventListener('input', function() {
             if (enableKeyboardInput.checked) {
                 fetchAndUpdateAsciiArt();
@@ -126,6 +128,5 @@
         });
     });
     </script>
-        
 </body>
 </html>
