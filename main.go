@@ -23,6 +23,7 @@ func main() {
 
 	// Use the handler function for routing
 	http.HandleFunc("/", handler)
+	http.HandleFunc("/export", handlers.ExportHandler)
 	port := ":8080"
 	log.Printf("Server started on http://localhost%s", port)
 
