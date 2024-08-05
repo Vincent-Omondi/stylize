@@ -5,7 +5,7 @@
     <title>ASCII Art Generator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
-    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/static/styles.css"> -->
 </head>
 <body>
     <div id="header">
@@ -29,14 +29,15 @@
                             </select>
                         </div>
                         <div class="input-group">
-                            <label for="enableKeyboardInput">Enable Keyboard Input:</label>
-                            <label class = "switch">
+                            <label for="enableKeyboardInput">Live Preview:</label>
+                            <label class="switch">
                                 <input type="checkbox" id="enableKeyboardInput" name="enableKeyboardInput">
-                                <span class = "slider round" ></span>
+                                <span class="slider round"></span>
+                                <a id="exportButton" style="display: none;" download>Export ASCII Art</a>
                             </label>
                         </div>
                     </div>
-                    <div class = "input-group submit-group">
+                    <div class="input-group submit-group">
                         <input type="submit" value="Generate ASCII Art">
                     </div>
                 </div>
@@ -47,7 +48,7 @@
     <div id="maincontent">
         <div id="outputFigDisplay">
             <pre id="asciiOutput">{{ .Result }}</pre>
-        </div>
+        </div>  
     </div>
 
     <div id="footer">
@@ -61,31 +62,29 @@
         const enableKeyboardInput = document.getElementById('enableKeyboardInput');
         const bannerSelect = document.getElementById('banner');
         const mainContent = document.getElementById('maincontent');
-    
-        // Function to scroll to the bottom right of the main content
+        const exportButton = document.getElementById('exportButton');
+
         function scrollToBottomRight() {
             mainContent.scrollTop = mainContent.scrollHeight;
             mainContent.scrollLeft = mainContent.scrollWidth;
         }
-    
-        // MutationObserver to automatically scroll the content
+
         const observer = new MutationObserver(() => {
             scrollToBottomRight();
         });
-    
+
         observer.observe(asciiOutput, { childList: true, subtree: true });
-    
-        // Function to fetch and update ASCII art
+
         function fetchAndUpdateAsciiArt() {
-            const text = textInput.value.trim(); // Trim whitespace
+            const text = textInput.value.trim();
             const banner = bannerSelect.value;
-    
-            // Check if text is empty to avoid 400 error
+
             if (!text) {
                 asciiOutput.innerText = "Please enter some text.";
+                exportButton.style.display = "none";
                 return;
             }
-    
+
             fetch('/ascii-art', {
                 method: 'POST',
                 headers: {
@@ -102,23 +101,55 @@
             })
             .then(data => {
                 asciiOutput.innerText = data;
-                scrollToBottomRight(); // Force scroll to bottom right
+                exportButton.style.display = "inline-block";
+                exportButton.href = `/export?ascii=${encodeURIComponent(data)}`;
+                scrollToBottomRight();
             })
             .catch(error => {
                 console.error('Error:', error);
                 asciiOutput.innerText = `Error: ${error.message}`;
+                exportButton.style.display = "none";
             });
         }
-    
-        // Form submission event
+
         document.getElementById('header-form').addEventListener('submit', function(event) {
             if (enableKeyboardInput.checked) {
-                event.preventDefault();  // Prevent the default form submission
+                event.preventDefault();
                 fetchAndUpdateAsciiArt();
+            } else {
+                event.preventDefault();
+                const formData = new FormData(event.target);
+                const text = formData.get('text').trim();
+                const banner = formData.get('banner');
+                
+                fetch('/ascii-art', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: `text=${encodeURIComponent(text)}&banner=${encodeURIComponent(banner)}`
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    asciiOutput.innerText = data;
+                    exportButton.style.display = "inline-block";
+                    exportButton.href = `/export?ascii=${encodeURIComponent(data)}`;
+                    scrollToBottomRight();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    asciiOutput.innerText = `Error: ${error.message}`;
+                    exportButton.style.display = "none";
+                });
             }
         });
-    
-        // Input event for real-time updates
+
         textInput.addEventListener('input', function() {
             if (enableKeyboardInput.checked) {
                 fetchAndUpdateAsciiArt();
@@ -126,6 +157,5 @@
         });
     });
     </script>
-        
 </body>
 </html>
