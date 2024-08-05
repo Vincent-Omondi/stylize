@@ -245,11 +245,27 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
-.input-group.submit-group {
+.input-group {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 0px;
     width: 100%;
+    gap: 10px;
+    
+}
+
+.submit-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0px;
+    gap: 10px;
+    
+}
+
+.submit-group input, .submit-group a {
+    width: 50%;
 }
 
 #exportButton {
