@@ -4,16 +4,13 @@
 # export DOCKER_BUILDKIT=1
 
 # Define variables
-IMAGE_NAME="stylize"
+IMAGE_NAME="stylize4"
 IMAGE_TAG="1.0"
-CONTAINER_NAME="stylize_container"
+CONTAINER_NAME="stylize_container4"
 PORT="8080"
 
 # Step 1: Build the Docker image and give it a tag and name
-echo "Building the Docker image..."
-docker build .
-IMAGE_ID=$(docker images -q | head -n 1)
-docker tag ${IMAGE_ID} ${IMAGE_NAME}:${IMAGE_TAG}
+docker image build -f Dockerfile -t ${IMAGE_NAME}:${IMAGE_TAG} .
 # Check if the build was successful
 if [ $? -eq 0 ]; then
   echo "Docker image built successfully and named successfully."
