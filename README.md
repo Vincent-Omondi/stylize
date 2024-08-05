@@ -112,10 +112,12 @@ To use ASCII Art Web, follow these steps:
 ### Prerequisite
 - Ensure you have Docker installed on your system. You can download and install Docker from here.
 ### Build and run
-- While in the root directory, build the image ``` docker build . ``` and then add a tag to it ``` docker tag 67918d5c611c stylize:1.0 ```
+- While in the root directory, build the image ``` docker build . ``` and then add a tag to it ``` docker tag <image id> stylize:1.0 ```
 - Use the image to create a container and run it
 ``` docker run -d -p 8080:8080 --name stylize_container stylize:1.0 ```
 - Open a browser and go to ``` http://localhost:8080 ```to access the app
+##### or
+- Open terminal and while at the root directory, run ``` ./builder.sh ```
 
 ## Optional Styles
 
