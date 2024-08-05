@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/Vincent-Omondi/stylize/handlers"
+	"stylize/handlers"
 )
 
 func main() {

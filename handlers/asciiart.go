@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/Vincent-Omondi/stylize/asciiart"
+	"stylize/asciiart"
 )
 
 func AsciiArtHandler(w http.ResponseWriter, r *http.Request) {

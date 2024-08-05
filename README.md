@@ -107,6 +107,16 @@ To use ASCII Art Web, follow these steps:
 
 - **N/B** Stylize is strictly limited to ascii characters from character 32 to 126(' ' to '~') 
 
+## Run Dockerized stylize
+-This section provides detailed instructions on how to build, tag, and run the Stylize application using Docker.
+### Prerequisite
+- Ensure you have Docker installed on your system. You can download and install Docker from here.
+### Build and run
+- While in the root directory, build the image ``` docker build . ``` and then add a tag to it ``` docker tag 67918d5c611c stylize:1.0 ```
+- Use the image to create a container and run it
+``` docker run -d -p 8080:8080 --name stylize_container stylize:1.0 ```
+- Open a browser and go to ``` http://localhost:8080 ```to access the app
+
 ## Optional Styles
 
 Stylize supports multiple ASCII art styles, including:
@@ -172,7 +182,7 @@ o888o   o888o `Y8bod8P' o888o o888o `Y8bod8P'
                                               
                                                                                 
 ```
-             
+
 ## Roadmap
 
 The following features are planned for future releases:
