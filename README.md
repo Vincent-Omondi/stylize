@@ -1,12 +1,12 @@
-# Ascii-Art-Web-Dockerize
+# Export-File
 
 ## Project Description
 
-Stylize is a web-based tool designed to enhance the user experience by making a website more appealing, interactive, and intuitive. This project integrates various modern web technologies and practices to ensure that the website is user-friendly, responsive, and provides comprehensive feedback to users. Stylize is an improvement of ASCII Art Web which is a web based tool developed in Go and HTML that converts text input into ASCII art using predefined character sets and displays it on the browser. This tool also allows users choose from multiple ASCII art styles to enhance the visual representation of their text.
+Ascii-art-web-export-file is an improvement of ASCII-Art-Web-Stylize designed to make sure that it is possible to export the output of the web application, at least in one export format at ones choice, with the right permission to read and write. It inherits all the properties of stylize which aims at enhancing the user experience by making a website more appealing, interactive, and intuitive. This project integrates various modern web technologies and practices to ensure that the website is user-friendly, responsive, and provides comprehensive feedback to users.
 
 ### Objectives
 
-Stylize focuses on providing an engaging and seamless user experience. The primary objective of this project is to create a user-friendly and visually appealing website that incorporates the following features:
+Ascii-art-web-export-file focuses on providing a funcionality do downlaod a file containing the art created. In addition, a user-friendly and visually appealing website that incorporates the following features:
 
 - Improved interactivity and intuitiveness.
 - Enhanced user-friendliness.
@@ -15,8 +15,8 @@ Stylize focuses on providing an engaging and seamless user experience. The prima
 ### Key Learning Outcomes
 
 - The basics of human-computer interaction.
-- The fundamentals of CSS.
-- Linking CSS and HTML.
+- The fundamentals of CSS and Js
+- Linking CSS, HTML and Js.
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary style="font-weight: bold; font-size: 1.4em;" >Table of Contents</summary>
@@ -47,7 +47,7 @@ Stylize focuses on providing an engaging and seamless user experience. The prima
 
 ## Implementation details
 
-ASCII Art Web is designed to provide users with a simple yet powerful tool for creating ASCII art from text input. It utilizes a set of ASCII characters to represent text in a visually appealing manner. The project consists of three main components:
+The project consists of the following components:
 
 - **main.go**: The entry point of the program, responsible for creating local server on port 8080 and routing URL paths.
 - **loadascii.go**: A package that handles the loading of ASCII characters from file.
@@ -55,6 +55,7 @@ ASCII Art Web is designed to provide users with a simple yet powerful tool for c
 - **asciiart.go**: A package that handles form action, loading ascii characters and generating ascii art
 - **index.go**: A package that handles the landing page of the web tool
 - **error.go**: A package that handles error page to allow for effective communication of any errors that occur
+- **export** : A package that handles download of a file containing the art created
 
 ### Built With
 
@@ -65,7 +66,7 @@ ASCII Art Web is designed to provide users with a simple yet powerful tool for c
 
 ## Getting Started
 
-To get started with Stylize, follow the instructions below.
+To get started with Ascii-art-web-export-file, follow the instructions below.
 
 ### Prerequisites
 
@@ -79,13 +80,13 @@ Before running the program, ensure that you have the following prerequisites:
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/Vincent-Omondi/stylize.git
+    git clone https://github.com/Vincent-Omondi/export-file.git
     ```
 
 2. Navigate to the project directory:
 
     ```sh
-    cd stylize
+    cd export-file
     ```
 
 ## Usage
@@ -104,24 +105,26 @@ To use ASCII Art Web, follow these steps:
 
 
 3. Input your text, choose your preferred style of display(banner) and then submit by pressing the generate ascii art button.
+4. A button appears to download the art. Click the button and check your local download directory for it.
+   <img src="export_button.png" alt="export button" width="600" height="400">
 
-- **N/B** Stylize is strictly limited to ascii characters from character 32 to 126(' ' to '~') 
+- **N/B** Ascii-art-web-export-file is strictly limited to ascii characters from character 32 to 126(' ' to '~') 
 
-## Run Dockerized stylize
+## Run Dockerized Ascii-art-web-export-file
 -This section provides detailed instructions on how to build, tag, and run the Stylize application using Docker.
 ### Prerequisite
 - Ensure you have Docker installed on your system. You can download and install Docker from here.
 ### Build and run
-- While in the root directory, build the image ``` docker build . ``` and then add a tag to it ``` docker tag <image id> stylize:1.0 ```
+- While in the root directory, build the image ``` docker build . ``` and then add a tag to it ``` docker tag <image id> exportfile:1.0 ```
 - Use the image to create a container and run it
-``` docker run -d -p 8080:8080 --name stylize_container stylize:1.0 ```
+``` docker run -d -p 8080:8080 --name stylize_container exportfile:1.0 ```
 - Open a browser and go to ``` http://localhost:8080 ```to access the app
 ##### or
 - Open terminal and while at the root directory, run ``` ./builder.sh ```
 
 ## Optional Styles
 
-Stylize supports multiple ASCII art styles, including:
+Ascii-art-web-export-file supports multiple ASCII art styles, including:
 
 - **Standard**: A basic ASCII art style.
 - **Shadow**: ASCII art with shadow effects.
@@ -195,7 +198,7 @@ The following features are planned for future releases:
 
 ## Contributing
 
-Contributions to stylize are welcome! If you'd like to contribute, please follow these steps:
+Contributions to Ascii-art-web-export-file are welcome! If you'd like to contribute, please follow these steps:
 
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
