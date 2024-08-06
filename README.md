@@ -80,7 +80,7 @@ Before running the program, ensure that you have the following prerequisites:
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/Vincent-Omondi/export-file.git
+    git clone https://learn.zone01kisumu.ke/git/vinomondi/ascii-art-web-export-file.git
     ```
 
 2. Navigate to the project directory:
